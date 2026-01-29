@@ -146,26 +146,12 @@ Keiran Suchak
 
   <p class="date">2026-01-30</p>
 </section>
-<section id="topics" class="slide level2">
-<h2>Topics</h2>
-<ul>
-<li>Converting <code>.dwg</code> to <code>.yaml</code></li>
-<li>Outbreak early warning signals</li>
-<li>ML-based approaches to synthetic trajectory generation</li>
-<li>Framing the inference problem</li>
-</ul>
+<section>
+<section id="topics" class="title-slide slide level1 center">
+<h1>Topics</h1>
+
 </section>
 <section id="topics-1" class="slide level2">
-<h2>Topics</h2>
-<ul>
-<li>Two parallel strands:
-<ul>
-<li>Uncertainty-aware identification of infection pathways</li>
-<li>Identifying early-warning signals for infection outbreaks</li>
-</ul></li>
-</ul>
-</section>
-<section id="topics-2" class="slide level2">
 <h2>Topics</h2>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
@@ -222,27 +208,240 @@ Keiran Suchak
 </div>
 </div>
 </section>
-<section id="board" class="slide level2">
-<h2>Board</h2>
+<section id="topics-2" class="slide level2">
+<h2>Topics</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan&lt;br&gt;DWG):::highlight
+        B(RCD&lt;br&gt;CSV/DB):::highlight
+        C(Wearables&lt;br&gt;CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM):::highlight
+        E(ML)
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning&lt;br&gt;indicator for&lt;br&gt;infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --&gt; G
+            G --&gt; H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 </section>
+<section id="topics-3" class="slide level2">
+<h2>Topics</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan&lt;br&gt;DWG)
+        B(RCD&lt;br&gt;CSV/DB)
+        C(Wearables&lt;br&gt;CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning&lt;br&gt;indicator for&lt;br&gt;infection outbreaks):::highlight
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --&gt; G
+            G --&gt; H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="topics-4" class="slide level2">
+<h2>Topics</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan&lt;br&gt;DWG)
+        B(RCD&lt;br&gt;CSV/DB)
+        C(Wearables&lt;br&gt;CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML)
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning&lt;br&gt;indicator for&lt;br&gt;infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories):::highlight
+            G(Co-location / Interaction):::highlight
+            H(Infection transmission):::highlight
+
+            F --&gt; G
+            G --&gt; H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="topics-5" class="slide level2">
+<h2>Topics</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan&lt;br&gt;DWG)
+        B(RCD&lt;br&gt;CSV/DB)
+        C(Wearables&lt;br&gt;CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning&lt;br&gt;indicator for&lt;br&gt;infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories):::highlight
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --&gt; G
+            G --&gt; H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section></section>
 <section>
 <section id="floorplans" class="title-slide slide level1 center">
 <h1>Floorplans</h1>
 
 </section>
 <section id="floorplans-1" class="slide level2">
-<h2>Floorplans</h2>
-<ul>
-<li>Getting floorplans</li>
-<li>What do they look like?</li>
-<li>What do we want them to do?</li>
-<li>What do they currently do?</li>
-<li>How are we processing them?</li>
-<li>What do we still need to do?</li>
-<li>What are we doing about it?</li>
-</ul>
-</section>
-<section id="floorplans-2" class="slide level2">
 <h2>Floorplans</h2>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
@@ -298,6 +497,135 @@ Keiran Suchak
 </div>
 </div>
 </div>
+</section>
+<section id="floorplans-2" class="slide level2">
+<h2>Floorplans</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan&lt;br&gt;DWG):::highlight
+        B(RCD&lt;br&gt;CSV/DB):::highlight
+        C(Wearables&lt;br&gt;CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML)
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning&lt;br&gt;indicator for&lt;br&gt;infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --&gt; G
+            G --&gt; H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="floorplans-3" class="slide level2">
+<h2>Floorplans</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan&lt;br&gt;DWG):::highlight
+        B(RCD&lt;br&gt;CSV/DB)
+        C(Wearables&lt;br&gt;CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM):::highlight
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning&lt;br&gt;indicator for&lt;br&gt;infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --&gt; G
+            G --&gt; H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="floorplans-4" class="slide level2">
+<h2>Floorplans</h2>
+</section>
+<section id="floorplans-5" class="slide level2">
+<h2>Floorplans</h2>
+<ul>
+<li>Getting floorplans</li>
+<li>What do they look like?</li>
+<li>What do we want them to do?</li>
+<li>What do they currently do?</li>
+<li>How are we processing them?</li>
+<li>What do we still need to do?</li>
+<li>What are we doing about it?</li>
+</ul>
 </section></section>
 <section>
 <section id="early-warning-indicator-for-infection-outbreaks" class="title-slide slide level1 center">
@@ -392,7 +720,7 @@ Keiran Suchak
         direction TB
 
         D(ABM)
-        E(ML):::highlight
+        E(ML)
 
         D ~~~ E
     end
@@ -407,6 +735,69 @@ Keiran Suchak
             F(Synthetic trajectories):::highlight
             G(Co-location / Interaction):::highlight
             H(Infection transmission):::highlight
+
+            F --&gt; G
+            G --&gt; H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="ml-for-synthetic-trajectory-generation" class="title-slide slide level1 center">
+<h1>ML for synthetic trajectory generation</h1>
+
+</section>
+<section id="ml-for-synthetic-trajectory-generation-1" class="slide level2">
+<h2>ML for synthetic trajectory generation</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan&lt;br&gt;DWG)
+        B(RCD&lt;br&gt;CSV/DB)
+        C(Wearables&lt;br&gt;CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning&lt;br&gt;indicator for&lt;br&gt;infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories):::highlight
+            G(Co-location / Interaction)
+            H(Infection transmission)
 
             F --&gt; G
             G --&gt; H
