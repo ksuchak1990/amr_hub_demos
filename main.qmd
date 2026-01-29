@@ -4,8 +4,233 @@ author: "Keiran Suchak"
 date: 2026-01-30
 format:
   revealjs:
+    footer: "Keiran Suchak - University of Leeds"
     slide-number: h.v
     chalkboard: true
+    mermaid:
+      theme: neutral
 ---
 
-# test
+## Topics
+
+- Converting `.dwg` to `.yaml`
+- Outbreak early warning signals
+- ML-based approaches to synthetic trajectory generation
+- Framing the inference problem
+
+## Topics
+
+- Two parallel strands:
+  - Uncertainty-aware identification of infection pathways
+  - Identifying early-warning signals for infection outbreaks
+
+## Topics
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG)
+        B(RCD<br>CSV/DB)
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML)
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+## Board
+
+# Floorplans
+
+## Floorplans
+
+- Getting floorplans
+- What do they look like?
+- What do we want them to do?
+- What do they currently do?
+- How are we processing them?
+- What do we still need to do?
+- What are we doing about it?
+
+## Floorplans
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG):::highlight
+        B(RCD<br>CSV/DB)
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML)
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+# Early warning indicator for infection outbreaks
+
+## Early warning indicator for infection outbreaks
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG)
+        B(RCD<br>CSV/DB)
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks):::highlight
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+# Simulation under uncertainty
+
+## Simulation under uncertainty
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG)
+        B(RCD<br>CSV/DB)
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories):::highlight
+            G(Co-location / Interaction):::highlight
+            H(Infection transmission):::highlight
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
