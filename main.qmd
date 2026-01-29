@@ -61,7 +61,7 @@ flowchart LR
     Models --- Outputs
 ```
 
-## Topics
+## Topics - Floorplans
 
 ```{mermaid}
 flowchart LR
@@ -109,7 +109,7 @@ flowchart LR
     Models --- Outputs
 ```
 
-## Topics
+## Topics - Problem framing
 
 ```{mermaid}
 flowchart LR
@@ -119,55 +119,7 @@ flowchart LR
         direction TB
 
         A(Floorplan<br>DWG)
-        B(RCD<br>CSV/DB)
-        C(Wearables<br>CSV/DB?)
-
-        A --- B
-        B --- C
-    end
-
-    subgraph Models
-        direction TB
-
-        D(ABM)
-        E(ML):::highlight
-
-        D ~~~ E
-    end
-
-    subgraph Outputs
-        direction TB
-
-        I(Early warning<br>indicator for<br>infection outbreaks):::highlight
-
-        subgraph "Simulation under uncertainty"
-            direction TB
-            F(Synthetic trajectories)
-            G(Co-location / Interaction)
-            H(Infection transmission)
-
-            F --> G
-            G --> H
-
-        end
-
-    end
-
-    Data --- Models
-    Models --- Outputs
-```
-
-## Topics
-
-```{mermaid}
-flowchart LR
-    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
-
-    subgraph Data
-        direction TB
-
-        A(Floorplan<br>DWG)
-        B(RCD<br>CSV/DB)
+        B(RCD<br>CSV/DB):::highlight
         C(Wearables<br>CSV/DB?)
 
         A --- B
@@ -205,7 +157,7 @@ flowchart LR
     Models --- Outputs
 ```
 
-## Topics
+## Topics - ML for synthetic trajectories
 
 ```{mermaid}
 flowchart LR
@@ -214,8 +166,8 @@ flowchart LR
     subgraph Data
         direction TB
 
-        A(Floorplan<br>DWG)
-        B(RCD<br>CSV/DB)
+        A(Floorplan<br>DWG):::highlight
+        B(RCD<br>CSV/DB):::highlight
         C(Wearables<br>CSV/DB?)
 
         A --- B
@@ -239,6 +191,54 @@ flowchart LR
         subgraph "Simulation under uncertainty"
             direction TB
             F(Synthetic trajectories):::highlight
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+## Topics - Temporal sequence modelling
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG)
+        B(RCD<br>CSV/DB):::highlight
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks):::highlight
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
             G(Co-location / Interaction)
             H(Infection transmission)
 
@@ -411,57 +411,7 @@ flowchart LR
 - What do we still need to do?
 - What are we doing about it?
 
-# Early warning indicator for infection outbreaks
-
-## Early warning indicator for infection outbreaks
-
-```{mermaid}
-flowchart LR
-    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
-
-    subgraph Data
-        direction TB
-
-        A(Floorplan<br>DWG)
-        B(RCD<br>CSV/DB)
-        C(Wearables<br>CSV/DB?)
-
-        A --- B
-        B --- C
-    end
-
-    subgraph Models
-        direction TB
-
-        D(ABM)
-        E(ML):::highlight
-
-        D ~~~ E
-    end
-
-    subgraph Outputs
-        direction TB
-
-        I(Early warning<br>indicator for<br>infection outbreaks):::highlight
-
-        subgraph "Simulation under uncertainty"
-            direction TB
-            F(Synthetic trajectories)
-            G(Co-location / Interaction)
-            H(Infection transmission)
-
-            F --> G
-            G --> H
-
-        end
-
-    end
-
-    Data --- Models
-    Models --- Outputs
-```
-
-# Simulation under uncertainty
+# Simulation under uncertainty - problem framing
 
 ## Simulation under uncertainty
 
@@ -474,7 +424,7 @@ flowchart LR
         direction TB
 
         A(Floorplan<br>DWG)
-        B(RCD<br>CSV/DB)
+        B(RCD<br>CSV/DB):::highlight
         C(Wearables<br>CSV/DB?)
 
         A --- B
@@ -523,8 +473,8 @@ flowchart LR
     subgraph Data
         direction TB
 
-        A(Floorplan<br>DWG)
-        B(RCD<br>CSV/DB)
+        A(Floorplan<br>DWG):::highlight
+        B(RCD<br>CSV/DB):::highlight
         C(Wearables<br>CSV/DB?)
 
         A --- B
@@ -561,3 +511,54 @@ flowchart LR
     Data --- Models
     Models --- Outputs
 ```
+
+# Temporal sequence modelling
+
+## Temporal sequence modelling
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG)
+        B(RCD<br>CSV/DB):::highlight
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks):::highlight
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
