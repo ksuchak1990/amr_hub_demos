@@ -523,8 +523,8 @@ Keiran Suchak
 </section>
 <section id="floorplans---rcd" class="slide level2 smaller">
 <h2>Floorplans - RCD</h2>
-<div id="aeed4b1e" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="5087d109" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -799,8 +799,92 @@ Keiran Suchak
 </div>
 </div>
 </section>
-<section id="simulation-under-uncertainty-1" class="slide level2">
-<h2>Simulation under uncertainty</h2>
+<section id="simulation-under-uncertainty---problem-framing-1" class="slide level2">
+<h2>Simulation under uncertainty - problem framing</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    subgraph " "
+        direction LR
+        F(Synthetic trajectories):::highlight
+        G(Co-location / Interaction):::highlight
+        H(Infection transmission):::highlight
+
+        F --&gt; G
+        G --&gt; H
+    end
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="simulation-under-uncertainty---problem-framing-2" class="slide level2">
+<h2>Simulation under uncertainty - problem framing</h2>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A(RCD)
+    B(Wearables)
+    C(Infection data)
+    D(Mobility model)
+    E(Infection model)
+    subgraph " "
+        direction LR
+        F(Synthetic trajectories)
+        G(Co-location / Interaction)
+        H(Infection transmission)
+
+        F --&gt; G
+        G --&gt; H
+    end
+    A --&gt; F
+    B --&gt; F
+    C --&gt; H
+    D --&gt; F
+    E --&gt; H
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="simulation-under-uncertainty---objectives" class="slide level2">
+<h2>Simulation under uncertainty - objectives</h2>
+<ul>
+<li>Simulation of mobility between observed locations</li>
+<li>Simulation of behaviour fitted to observed locations</li>
+</ul>
+</section>
+<section id="simulation-under-uncertainty---thinking-loosely-in-data-assimilation-terms" class="slide level2">
+<h2>Simulation under uncertainty - thinking (loosely) in data assimilation terms</h2>
+<ul>
+<li><strong>Sequential assimilation:</strong> Simulation of mobility between observed locations</li>
+<li><strong>Variational assimilation:</strong> Simulation of behaviour fitted to observed locations</li>
+</ul>
+</section>
+<section id="simulation-under-uncertainty---problem-framing-3" class="slide level2">
+<h2>Simulation under uncertainty - problem framing</h2>
+<blockquote>
+<p>Given two observations of a healthcare worker that form the origin and destination of a “trip”, what is the most likely route / series of activities for them to take in-between?</p>
+</blockquote>
+</section>
+<section id="simulation-under-uncertainty---problem-framing-4" class="slide level2">
+<h2>Simulation under uncertainty - problem framing</h2>
+<blockquote>
+<p>Iterate over sequential pairs of observations for a healthcare worker:</p>
+<blockquote>
+<p>Given two observations of a healthcare worker that form the origin and destination of a “trip”, what is the most likely route / series of activities for them to take in-between?</p>
+</blockquote>
+</blockquote>
 </section></section>
 <section>
 <section id="temporal-sequence-modelling" class="title-slide slide level1 center">
