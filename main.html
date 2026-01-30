@@ -29,7 +29,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="main_files/libs/revealjs/dist/theme/quarto-534cd8e3a96973385dffff3f4709048d.css">
   <link href="main_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="main_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -325,63 +345,6 @@ Keiran Suchak
 </div>
 </div>
 </section>
-<section id="topics---ml-for-synthetic-trajectories" class="slide level2">
-<h2>Topics - ML for synthetic trajectories</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
-
-    subgraph Data
-        direction TB
-
-        A(Floorplan&lt;br&gt;DWG):::highlight
-        B(RCD&lt;br&gt;CSV/DB):::highlight
-        C(Wearables&lt;br&gt;CSV/DB?)
-
-        A --- B
-        B --- C
-    end
-
-    subgraph Models
-        direction TB
-
-        D(ABM)
-        E(ML):::highlight
-
-        D ~~~ E
-    end
-
-    subgraph Outputs
-        direction TB
-
-        I(Early warning&lt;br&gt;indicator for&lt;br&gt;infection outbreaks)
-
-        subgraph "Simulation under uncertainty"
-            direction TB
-            F(Synthetic trajectories):::highlight
-            G(Co-location / Interaction)
-            H(Infection transmission)
-
-            F --&gt; G
-            G --&gt; H
-
-        end
-
-    end
-
-    Data --- Models
-    Models --- Outputs
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section>
 <section id="topics---temporal-sequence-modelling" class="slide level2">
 <h2>Topics - Temporal sequence modelling</h2>
 <div class="cell" data-reveal="true" data-layout-align="default">
@@ -560,8 +523,8 @@ Keiran Suchak
 </section>
 <section id="floorplans---rcd" class="slide level2 smaller">
 <h2>Floorplans - RCD</h2>
-<div id="763d3dc6" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="aeed4b1e" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -840,69 +803,6 @@ Keiran Suchak
 <h2>Simulation under uncertainty</h2>
 </section></section>
 <section>
-<section id="ml-for-synthetic-trajectory-generation" class="title-slide slide level1 center">
-<h1>ML for synthetic trajectory generation</h1>
-
-</section>
-<section id="ml-for-synthetic-trajectory-generation-1" class="slide level2">
-<h2>ML for synthetic trajectory generation</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
-<div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
-
-
-    subgraph Data
-        direction TB
-
-        A(Floorplan&lt;br&gt;DWG):::highlight
-        B(RCD&lt;br&gt;CSV/DB):::highlight
-        C(Wearables&lt;br&gt;CSV/DB?)
-
-        A --- B
-        B --- C
-    end
-
-    subgraph Models
-        direction TB
-
-        D(ABM)
-        E(ML):::highlight
-
-        D ~~~ E
-    end
-
-    subgraph Outputs
-        direction TB
-
-        I(Early warning&lt;br&gt;indicator for&lt;br&gt;infection outbreaks)
-
-        subgraph "Simulation under uncertainty"
-            direction TB
-            F(Synthetic trajectories):::highlight
-            G(Co-location / Interaction)
-            H(Infection transmission)
-
-            F --&gt; G
-            G --&gt; H
-
-        end
-
-    end
-
-    Data --- Models
-    Models --- Outputs
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
-</div>
-</section></section>
-<section>
 <section id="temporal-sequence-modelling" class="title-slide slide level1 center">
 <h1>Temporal sequence modelling</h1>
 
@@ -973,17 +873,157 @@ Keiran Suchak
 <section id="temporal-sequence-modelling---hypotheses" class="slide level2">
 <h2>Temporal sequence modelling - hypotheses</h2>
 <ul>
-<li><strong>H1</strong> - Specific short-term sequences increase the instantaneous hazard of entering an outbreak.</li>
-<li><strong>H2</strong> - Seniority / role modulates the strength of pre-cursors.</li>
+<li><strong>H1: Behaviour</strong> - Specific short-term behavioural sequences increase the instantaneous hazard of entering an outbreak.</li>
+<li><strong>H2: Hierarchy</strong> - Seniority / role modulates the strength of pre-cursors.</li>
+<li><strong>H3: Connection</strong> - Bursts of networked interactions precede an outbreak</li>
 </ul>
 </section>
-<section id="temporal-sequence-modelling---methods" class="slide level2 smaller">
-<h2>Temporal sequence modelling - methods</h2>
+<section id="temporal-sequence-modelling---framing" class="slide level2 smaller">
+<h2>Temporal sequence modelling - framing</h2>
+<ul>
+<li>Consider a unified data stream generated by a hospital ward:</li>
+</ul>
+<p><span class="math display">\[
+\{(t_k, i_k, c_k, j_k, x_k)\}_{k=1}^N,
+\]</span></p>
+<ul>
+<li><span class="math inline">\(t_k\)</span>: event datetime</li>
+<li><span class="math inline">\(i_k\)</span>: healtcare worker</li>
+<li><span class="math inline">\(c_k\)</span>: event category</li>
+<li><span class="math inline">\(j_k\)</span>: other person involved in event</li>
+<li><span class="math inline">\(x_k\)</span>: location</li>
+</ul>
 </section>
-<section id="temporal-sequence-modelling-2" class="slide level2">
-<h2>Temporal sequence modelling</h2>
-
+<section id="temporal-sequence-modelling---framing-1" class="slide level2">
+<h2>Temporal sequence modelling - framing</h2>
+<ul>
+<li>Assign temporal bins</li>
+<li>Engineer features</li>
+<li>Estimate at each time, <span class="math inline">\(t\)</span>, the probability that the system will enter an outbreak within a fixed temporal horizon, <span class="math inline">\(H\)</span>.
+<ul>
+<li>Logistic regression</li>
+<li>GLMM</li>
+</ul></li>
+</ul>
+</section>
+<section id="temporal-sequence-modelling---feature-engineering" class="slide level2 smaller scrollable">
+<h2>Temporal sequence modelling - feature engineering</h2>
+<ul>
+<li>Number of people on shift a given time, <span class="math inline">\(N_{staff}(t)\)</span></li>
+<li>Binned staff time (mins/hours) - the number of mins/hours a HCW worked in a given temporal bin, <span class="math inline">\(\sum_{i \in W} \mathrm{overlap_{mins}}(i, t)\)</span></li>
+<li>Absence / understaffing indicator:</li>
+</ul>
+<p><span class="math display">\[
+A(t) = \frac{N_{rostered}(t) - N_{attended}(t)}{N_{rostered}}
+\]</span></p>
+<ul>
+<li>Shift type, e.g.&nbsp;day vs night, weekday vs weekend</li>
+<li>Shift change indicator</li>
+<li>Interaction intensity:</li>
+</ul>
+<p><span class="math display">\[
+I(t) = \frac{N_{interactions}(t)}{N_{staff}(t)}
+\]</span></p>
+<ul>
+<li>Total interaction count, <span class="math inline">\(N_{interactions}(t)\)</span></li>
+<li>Interactions per staff mins/hours:</li>
+</ul>
+<p><span class="math display">\[
+\frac{N_{interactions}}{\mathrm{binned\_staff\_hours}}
+\]</span></p>
+<ul>
+<li>Unique patients</li>
+<li>Patients per worker concentration</li>
+<li>Gini of patients across workers</li>
+<li>Entropy of patients across workers</li>
+<li>Proportion of interactions that are already seen in the last <span class="math inline">\(t\)</span> time</li>
+<li>Counts of interactions by procedure category</li>
+<li>Proportion of interactions by procedure category</li>
+<li>Counts of high-risk interactions by procedure category</li>
+<li>Proportion of high-risk interactions by procedure category</li>
+<li>Total doors swipes</li>
+<li>Unique doors swiped</li>
+<li>Location entropy</li>
+<li>Network metrics:
+<ul>
+<li>Construct bipartite graph per unit time between HCWs and patients</li>
+<li>Mean worker degree</li>
+<li>Max worker degree</li>
+<li>Size of largest component</li>
+<li>Graph density</li>
+</ul></li>
+<li>GLMM candidate variables - random intercepts by:
+<ul>
+<li>Ward</li>
+<li>Week / month</li>
+<li>Shift type</li>
+</ul></li>
+<li>We can also think about a lot of these features from an “episode” perspective rather than considering a shift or any other arbitrary unit of time.</li>
+<li>An episode is defined as a segmented chunk of activity that is treated as a unit.</li>
+<li>We might consider a range of different types of episodes:
+<ul>
+<li>Shift episodes: Everything a HCW does between the rostered start and end of their shift.</li>
+<li>Care / patient-visit episodes: A contiguous period of interactions with the same patient.</li>
+<li>Movement episodes: A sequence of door events that begins when a worker leaves one zone and arrives (i.e.&nbsp;starts dwelling) in another.</li>
+<li>Task episodes: A block of actions around a procedure type.</li>
+</ul></li>
+<li>Based on this, we can compute things like:
+<ul>
+<li>Number of episodes per hour</li>
+<li>Average episode length</li>
+<li>Number of unique patients per episode</li>
+<li>Proportion of episodes that span multiple spaces / patients</li>
+</ul></li>
+<li>Another avenue might be think of other ways to find more basic ways of integrating behavioural sequences into basic models:
+<ul>
+<li>Transition counts: How often do different sequential pairs of events occur in a given unit time?</li>
+<li>This could very quickly become a very large set of variables and would very much depend on how we define our “alphabet” of states.</li>
+</ul></li>
+</ul>
+</section>
+<section id="section" class="slide level2 center">
+<h2></h2>
+<div class="fragment">
+<p>But what about the sequence of events?</p>
+</div>
+<div class="fragment">
+<p>What about the space?</p>
+</div>
+<div class="fragment">
+<p>What about the social structure?</p>
+</div>
+</section>
+<section id="temporal-sequence-modelling---methods" class="slide level2">
+<h2>Temporal sequence modelling - methods</h2>
+<ul>
+<li>Transformer-style models <span class="citation" data-cites="vaswani2017attention">(<a href="#/references" role="doc-biblioref" onclick="">Vaswani et al. 2017</a>)</span></li>
+<li>Neural Hawkes process <span class="citation" data-cites="mei2017neural">(<a href="#/references" role="doc-biblioref" onclick="">Mei and Eisner 2017</a>)</span></li>
+<li>Intensity-based RNNs <span class="citation" data-cites="du2016recurrent">(<a href="#/references" role="doc-biblioref" onclick="">Du et al. 2016</a>)</span></li>
+<li>Temporal GNNs <span class="citation" data-cites="rossi2020temporal">(<a href="#/references" role="doc-biblioref" onclick="">Rossi et al. 2020</a>)</span></li>
+<li>Spatio-temporal scan statistics <span class="citation" data-cites="kulldorff2007multivariate">(<a href="#/references" role="doc-biblioref" onclick="">Kulldorff et al. 2007</a>)</span></li>
+</ul>
 </section></section>
+<section id="references" class="title-slide slide level1 smaller scrollable">
+<h1>References</h1>
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-du2016recurrent" class="csl-entry" role="listitem">
+Du, Nan, Hanjun Dai, Rakshit Trivedi, Utkarsh Upadhyay, Manuel Gomez-Rodriguez, and Le Song. 2016. <span>“Recurrent Marked Temporal Point Processes: Embedding Event History to Vector.”</span> In <em>Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining</em>, 1555–64.
+</div>
+<div id="ref-kulldorff2007multivariate" class="csl-entry" role="listitem">
+Kulldorff, Martin, Farzad Mostashari, Luiz Duczmal, W Katherine Yih, Ken Kleinman, and Richard Platt. 2007. <span>“Multivariate Scan Statistics for Disease Surveillance.”</span> <em>Statistics in Medicine</em> 26 (8): 1824–33.
+</div>
+<div id="ref-mei2017neural" class="csl-entry" role="listitem">
+Mei, Hongyuan, and Jason M Eisner. 2017. <span>“The Neural Hawkes Process: A Neurally Self-Modulating Multivariate Point Process.”</span> <em>Advances in Neural Information Processing Systems</em> 30.
+</div>
+<div id="ref-rossi2020temporal" class="csl-entry" role="listitem">
+Rossi, Emanuele, Ben Chamberlain, Fabrizio Frasca, Davide Eynard, Federico Monti, and Michael Bronstein. 2020. <span>“Temporal Graph Networks for Deep Learning on Dynamic Graphs.”</span> <em>arXiv Preprint arXiv:2006.10637</em>.
+</div>
+<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
+Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. 2017. <span>“Attention Is All You Need.”</span> <em>Advances in Neural Information Processing Systems</em> 30.
+</div>
+</div>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
