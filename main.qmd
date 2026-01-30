@@ -11,6 +11,11 @@ format:
       theme: neutral
 ---
 
+```{python}
+import geopandas as gpd
+import pandas as pd
+```
+
 # Topics
 
 ## Topics
@@ -351,6 +356,20 @@ flowchart LR
     Models --- Outputs
 ```
 
+## Floorplans - RCD {.smaller}
+
+```{python}
+df = pd.read_csv("http://localhost:8000/location_timeseries.csv")
+df.head()
+```
+
+## Floorplans - RCD
+
+- <a href="http://localhost:8000/ega02.pdf" target="_blank">Floorplan PDF</a>
+- Attaching spatial points to RCD
+  - `regex`: matching to standardised location tags
+  - Medical gas pipes: identifying bed locations on ward
+
 ## Floorplans
 
 ```{mermaid}
@@ -401,15 +420,41 @@ flowchart LR
 
 ## Floorplans
 
+- `cadflow` docker image:
+
+```{mermaid}
+flowchart LR
+    subgraph " "
+        direction LR
+        A(.dwg)
+        B(.dxf)
+        C(.gpkg)
+
+        A --> B
+        B --> C
+    end
+```
+- Visualise
+
 ## Floorplans
 
-- Getting floorplans
-- What do they look like?
-- What do we want them to do?
-- What do they currently do?
-- How are we processing them?
-- What do we still need to do?
-- What are we doing about it?
+- <a href="http://localhost:8000/ega02.html" target="_blank">Floorplan HTML</a>
+- But this just provides linestrings - we need tagged polygons!
+- Potential next steps:
+  - Autodesk Revit: Extracting polygons
+  - Extension:
+```{mermaid}
+flowchart LR
+    subgraph " "
+        direction LR
+        B(" ")
+        C(.gpkg)
+        D(.yaml)
+
+        B --> C
+        C --> D
+    end
+```
 
 # Simulation under uncertainty - problem framing
 
@@ -461,6 +506,9 @@ flowchart LR
     Data --- Models
     Models --- Outputs
 ```
+
+## Simulation under uncertainty
+
 # ML for synthetic trajectory generation
 
 ## ML for synthetic trajectory generation
@@ -562,3 +610,18 @@ flowchart LR
     Models --- Outputs
 ```
 
+## Temporal sequence modelling - objective
+
+> Develop an analytics pipeline that detects behavioural pre-cursors to
+> infection outbreaks and produces an early-warning risk indicator at the
+> team/role level.
+
+## Temporal sequence modelling - hypotheses
+
+- **H1** - Specific short-term sequences increase the instantaneous hazard of
+  entering an outbreak.
+- **H2** - Seniority / role modulates the strength of pre-cursors.
+
+## Temporal sequence modelling - methods {.smaller}
+
+## Temporal sequence modelling
