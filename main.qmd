@@ -11,18 +11,12 @@ format:
       theme: neutral
 ---
 
-## Topics
+```{python}
+import geopandas as gpd
+import pandas as pd
+```
 
-- Converting `.dwg` to `.yaml`
-- Outbreak early warning signals
-- ML-based approaches to synthetic trajectory generation
-- Framing the inference problem
-
-## Topics
-
-- Two parallel strands:
-  - Uncertainty-aware identification of infection pathways
-  - Identifying early-warning signals for infection outbreaks
+# Topics
 
 ## Topics
 
@@ -72,19 +66,199 @@ flowchart LR
     Models --- Outputs
 ```
 
-## Board
+## Topics - Floorplans
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG):::highlight
+        B(RCD<br>CSV/DB):::highlight
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM):::highlight
+        E(ML)
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+## Topics - Problem framing
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG)
+        B(RCD<br>CSV/DB):::highlight
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML)
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories):::highlight
+            G(Co-location / Interaction):::highlight
+            H(Infection transmission):::highlight
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+## Topics - ML for synthetic trajectories
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG):::highlight
+        B(RCD<br>CSV/DB):::highlight
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories):::highlight
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+## Topics - Temporal sequence modelling
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG)
+        B(RCD<br>CSV/DB):::highlight
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks):::highlight
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
 
 # Floorplans
-
-## Floorplans
-
-- Getting floorplans
-- What do they look like?
-- What do we want them to do?
-- What do they currently do?
-- How are we processing them?
-- What do we still need to do?
-- What are we doing about it?
 
 ## Floorplans
 
@@ -134,9 +308,261 @@ flowchart LR
     Models --- Outputs
 ```
 
-# Early warning indicator for infection outbreaks
+## Floorplans
 
-## Early warning indicator for infection outbreaks
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG):::highlight
+        B(RCD<br>CSV/DB):::highlight
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML)
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+## Floorplans - RCD {.smaller}
+
+```{python}
+df = pd.read_csv("http://localhost:8000/location_timeseries.csv")
+df.head()
+```
+
+## Floorplans - RCD
+
+- <a href="http://localhost:8000/ega02.pdf" target="_blank">Floorplan PDF</a>
+- Attaching spatial points to RCD
+  - `regex`: matching to standardised location tags
+  - Medical gas pipes: identifying bed locations on ward
+
+## Floorplans
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG):::highlight
+        B(RCD<br>CSV/DB)
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM):::highlight
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories)
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+## Floorplans
+
+- `cadflow` docker image:
+
+```{mermaid}
+flowchart LR
+    subgraph " "
+        direction LR
+        A(.dwg)
+        B(.dxf)
+        C(.gpkg)
+
+        A --> B
+        B --> C
+    end
+```
+- Visualise
+
+## Floorplans
+
+- <a href="http://localhost:8000/ega02.html" target="_blank">Floorplan HTML</a>
+- But this just provides linestrings - we need tagged polygons!
+- Potential next steps:
+  - Autodesk Revit: Extracting polygons
+  - Extension:
+```{mermaid}
+flowchart LR
+    subgraph " "
+        direction LR
+        B(" ")
+        C(.gpkg)
+        D(.yaml)
+
+        B --> C
+        C --> D
+    end
+```
+
+# Simulation under uncertainty - problem framing
+
+## Simulation under uncertainty
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG)
+        B(RCD<br>CSV/DB):::highlight
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML)
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories):::highlight
+            G(Co-location / Interaction):::highlight
+            H(Infection transmission):::highlight
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+## Simulation under uncertainty
+
+# ML for synthetic trajectory generation
+
+## ML for synthetic trajectory generation
+
+```{mermaid}
+flowchart LR
+    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+
+
+    subgraph Data
+        direction TB
+
+        A(Floorplan<br>DWG):::highlight
+        B(RCD<br>CSV/DB):::highlight
+        C(Wearables<br>CSV/DB?)
+
+        A --- B
+        B --- C
+    end
+
+    subgraph Models
+        direction TB
+
+        D(ABM)
+        E(ML):::highlight
+
+        D ~~~ E
+    end
+
+    subgraph Outputs
+        direction TB
+
+        I(Early warning<br>indicator for<br>infection outbreaks)
+
+        subgraph "Simulation under uncertainty"
+            direction TB
+            F(Synthetic trajectories):::highlight
+            G(Co-location / Interaction)
+            H(Infection transmission)
+
+            F --> G
+            G --> H
+
+        end
+
+    end
+
+    Data --- Models
+    Models --- Outputs
+```
+
+# Temporal sequence modelling
+
+## Temporal sequence modelling
 
 ```{mermaid}
 flowchart LR
@@ -146,7 +572,7 @@ flowchart LR
         direction TB
 
         A(Floorplan<br>DWG)
-        B(RCD<br>CSV/DB)
+        B(RCD<br>CSV/DB):::highlight
         C(Wearables<br>CSV/DB?)
 
         A --- B
@@ -184,53 +610,18 @@ flowchart LR
     Models --- Outputs
 ```
 
-# Simulation under uncertainty
+## Temporal sequence modelling - objective
 
-## Simulation under uncertainty
+> Develop an analytics pipeline that detects behavioural pre-cursors to
+> infection outbreaks and produces an early-warning risk indicator at the
+> team/role level.
 
-```{mermaid}
-flowchart LR
-    classDef highlight fill:#ffcc00,stroke:#333,stroke-width:2px;
+## Temporal sequence modelling - hypotheses
 
+- **H1** - Specific short-term sequences increase the instantaneous hazard of
+  entering an outbreak.
+- **H2** - Seniority / role modulates the strength of pre-cursors.
 
-    subgraph Data
-        direction TB
+## Temporal sequence modelling - methods {.smaller}
 
-        A(Floorplan<br>DWG)
-        B(RCD<br>CSV/DB)
-        C(Wearables<br>CSV/DB?)
-
-        A --- B
-        B --- C
-    end
-
-    subgraph Models
-        direction TB
-
-        D(ABM)
-        E(ML):::highlight
-
-        D ~~~ E
-    end
-
-    subgraph Outputs
-        direction TB
-
-        I(Early warning<br>indicator for<br>infection outbreaks)
-
-        subgraph "Simulation under uncertainty"
-            direction TB
-            F(Synthetic trajectories):::highlight
-            G(Co-location / Interaction):::highlight
-            H(Infection transmission):::highlight
-
-            F --> G
-            G --> H
-
-        end
-
-    end
-
-    Data --- Models
-    Models --- Outputs
-```
+## Temporal sequence modelling
