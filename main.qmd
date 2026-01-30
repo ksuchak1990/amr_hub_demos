@@ -312,7 +312,7 @@ flowchart LR
 ## Floorplans - RCD {.smaller}
 
 ```{python}
-df = pd.read_csv("http://localhost:8000/location_timeseries.csv")
+df = pd.read_csv("https://github.com/UCL-ARC/amr-hub/blob/as/agent-creation/python-code/tests/inputs/location_timeseries.csv")
 df.head()
 ```
 
